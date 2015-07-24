@@ -5,11 +5,12 @@ require 'flickraw'
 require 'launchy'
 
 # you get these from the flickr site when you create an app
-FlickRaw.api_key = 'enter your key here'
-FlickRaw.shared_secret = 'enter your secret here'
+FlickRaw.api_key = '7a4acf49b95245125c3c33807363f635'
+FlickRaw.shared_secret = '966dc77777a5aaf7'
+puts "What is the picture name?" 
+name = gets.chomp.downcase
 
-list = flickr.photos.getRecent
-
+list = flickr.photos.search(tags: name)
 # let's get the photo_id for the first picture in the list
 photo_id = list.first.id
 
@@ -28,5 +29,3 @@ puts photo_url
 
 # launch it in the browser
 Launchy.open(photo_url)
-
-
